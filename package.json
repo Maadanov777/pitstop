@@ -1,0 +1,51 @@
+{
+  "name": "vite-react-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/joy": "^5.0.0-beta.51",
+    "@mui/material": "^6.3.1",
+    "@smastrom/react-rating": "^1.4.0",
+    "bootstrap": "^5.3.2",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
+    "material-icons": "^1.13.12",
+    "moment": "^2.30.1",
+    "mui-react-modal": "^1.0.2",
+    "react": "^18.2.0",
+    "react-countup": "^6.5.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.0",
+    "react-infinite-scroller": "^1.2.6",
+    "react-intersection-observer": "^9.5.3",
+    "react-router-dom": "^6.28.1",
+    "scss": "^0.2.4",
+    "sort-by": "^1.2.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.3.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "daisyui": "^4.6.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.4.33",
+    "sass": "^1.69.7",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.8"
+  }
+}
