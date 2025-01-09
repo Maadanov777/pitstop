@@ -34,16 +34,17 @@ export default function BasicModal() {
     top: '15px', marginLeft: '10px'}}>
       <Button style={{
         borderRadius: 35,
-        backgroundColor: "#bb2124",
+        backgroundColor: "#fea116",
         padding: "12px 20px",
         fontSize: "12px",
-        fontFamily: 'inherit',
+        fontFamily: 'italic',
+        fontWeight: 'inherit',
         color: 'white',
         
     }}   onClick={handleOpen} > ПРАВИЛА КАРАОКЕ БАРА </Button>
       <Modal width={100}open={open}>
   <ModalDialog
-    color="danger"
+    color="warning"
     layout="center"
     size="lg"
     variant="soft"

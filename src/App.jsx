@@ -18,45 +18,45 @@ import BasicModal from './components/Modal'
 import { useEffect, useState } from 'react';
 
 export default function App() {
-const [state, setState] = useState(salat)
+const [state, setState] = useState()
 const [img, setImage] = useState()
 
 useEffect(() => {
   if(state == 0) {
-    setImage(salat);
+    setImage("");
   }
   else if(state == 1) {
-    setImage(pervyi)
+    setImage("")
   }
   else if(state == 2) {
-    setImage(vtoroy)
+    setImage("")
   }
   else if(state == 3) {
-    setImage(burger)
+    setImage("")
   }
   else if(state == 4) {
-    setImage(zakuski)
+    setImage("")
   }
   else if(state == 5) {
-    setImage(vypechka)
+    setImage("")
   }
   else if(state == 6) {
-    setImage(souses)
+    setImage("")
   }
   else if(state == 7) {
-    setImage(garnirs)
+    setImage("")
   }
   else if(state == 8) {
-    setImage(pizza)
+    setImage("")
   }
   else if(state == 9) {
-    setImage(banket)
+    setImage("")
   }
   else if(state == 10) {
-    setImage(bar)
+    setImage("")
   }
   else {
-    setImage(salat)
+    setImage()
   }
 }, [state])
 
