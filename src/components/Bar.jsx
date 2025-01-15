@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 
-const BarNav = () => {
+const BarNav = ({cart, setCart}) => {
     const barItem = [
         {
             category: 'Напитки',
@@ -15,7 +16,7 @@ const BarNav = () => {
               },
               {
                 name: 'Coca Cola, Fanta, Sprite',
-                price: '250мл - 80с / 1л - 180с',
+                price: '1л / 180с',
                 imageSrc: 'https://i.imgur.com/2ry8F0i.jpg',
                 description: ' ',
               },
@@ -654,6 +655,14 @@ const BarNav = () => {
     ]
 
 
+useEffect(() => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}, [cart]); //dependency is items
+
+// Add a new item
+const addToCart = (item) => {
+    setCart([...cart, item]);
+};
 
     return ( 
         <div>
@@ -696,7 +705,10 @@ const BarNav = () => {
                           <div className="w-100 d-flex flex-column text-start ps-1">
                             <h5 className="d-flex justify-content-between border-bottom pb-2">
                               <span>{item.name}</span>
-                              <span className="text-primary text-slate-950">{item.price}</span>
+                              <div className='d-flex' style={{marginBottom: '15px'}}>
+                                                            <span className="text-primary text-slate-950">{item.price}</span>
+                                                            <IoAddCircleOutline size={30} style={{marginLeft: '15px', marginTop: '-5px'}} onClick={() => addToCart({...item, id:itemIndex + 1123})}/> 
+                                                          </div>
                             </h5>
                             <small className="fst-italic">
                               {item.description}

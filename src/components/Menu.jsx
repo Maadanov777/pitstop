@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BarNav from '../components/Bar'
 import logo from '../img/logo.svg'
+import { IoAddCircleOutline } from "react-icons/io5";
+import { IoCartOutline } from "react-icons/io5";
+import { Link } from 'react-router-dom';
+
+
 
 const Menu = ({setState, state}) => {
-
-  const [change, setChange] = useState(false) 
 
   const menuItems = [
     {
@@ -14,56 +17,67 @@ const Menu = ({setState, state}) => {
         {
           name: 'Теплый салат с телятиной',
           price: '250гр / 350с',
+          count: 0,
           description: 'жаренная телятина, огурцы, помидоры, шпинат, острый перец, восточная заправка',
         },
         {
           name: 'Острый салат',
           price: '250гр / 300с',
+          count: 0,
           description: 'отварная говядина, острый перец, свежая зелень, помидоры, огурцы, лук, соевый соус',
         },
         {
           name: 'Греческий салат',
           price: '250гр / 300с',
+          count: 0,
           description: 'сыр "Фетакса", свежие помидоры, огурцы, салатные листья, маслины',
         },
         {
           name: 'Цезарь салат',
           price: '250гр / 350с',
+          count: 0,
           description: 'микс из листьев салата, куриное филе, гренки "цезарь", сыр пармезан,соус',
         },   
         {
           name: 'Колибри салат',
           price: '250гр / 300с',
+          count: 0,
           description: 'куриное филе, кукуруза, свежие овощи, картофель пай, майонез',
         },
         {
           name: 'Нежный салат',
           price: '250гр / 300с',
+          count: 0,
           description: 'огурцы, сыр, помидоры, коп. колбаса, майонез',
         },
         {
           name: 'Фруктовый салат',
           price: '250гр / 300с',
+          count: 0,
           description: 'фрукты по сезону , заправляется йогуртом',
         },
         {
           name: 'Фирменный салат "Пит-Стоп"',
           price: '250гр / 350с',
+          count: 0,
           description: 'говядина, баклажан, огурцы,помидор, перец полугорький',
         },
         {
           name: 'Баклажан салат',
           price: '250гр / 350с',
+          count: 0,
           description: 'помидор, баклажан, кисло-сладкий соус',
         },
         {
           name: 'Свежий салат',
           price: '250гр / 300с',
+          count: 0,
           description: 'Свежие огурцы, помидоры, репчатый лук, свежая зелень',
         },
         {
           name: 'Острый язык',
           price: '250гр / 300с',
+          count: 0,
           description: 'огурцы,язык,морковь,соус',
         },
         // Add more breakfast items as needed
@@ -75,41 +89,49 @@ const Menu = ({setState, state}) => {
         {
           name: 'Шорпо',
           price: '280с',
+          count: 0,
           description: 'мясной бульон с добавлением картофеля, моркови, мясо, посыпанный с зеленью',
         },
         {
           name: 'Солянка',
           price: '300с',
+          count: 0,
           description: 'телятина , копчености , соленые огурцы , маслины , лимон',
         },
         {
           name: 'Суп острый',
           price: '280с',
+          count: 0,
           description: 'говядина , фунчеза , овощи',
         },
         {
           name: 'Пельмени',
           price: '280с',
+          count: 0,
           description: 'говяжий фарш , сметана , зелень',
         },
         {
           name: 'Мампар',
           price: '280с',
+          count: 0,
           description: 'суп из говядины с тестом',
         },
         {
           name: 'Кукси Корейский',
           price: '280с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Долма суп',
           price: '350с',
+          count: 0,
           description: 'ребра,говяжие тефтели,брокколи,картофель,яйца пер.,зелень',
         },
         {
           name: 'Рамён с яйцом',
           price: '250с',
+          count: 0,
           description: ' ',
         },
        
@@ -122,76 +144,91 @@ const Menu = ({setState, state}) => {
         {
           name: 'Телятина с картофелем под сыром',
           price: '400с',
+          count: 0,
           description: 'телятина , обжаренный картофель , сыр , майонез',
         },
         {
           name: 'Фрикассе с гарниром',
           price: '400с',
+          count: 0,
           description: 'куриное филе , грибы , лук , кукуруза , сметана',
         },
         {
           name: 'Мясо в горшочке',
           price: '400с',
+          count: 0,
           description: 'говядина , грибы , картофель , помидоры , сыр',
         },
         {
           name: 'Куурдак с картошкой',
           price: '470с',
+          count: 0,
           description: 'говядина , картофель , лук',
         },
         {
           name: 'Жаровня',
           price: '480с',
+          count: 0,
           description: 'говядина с овощами',
         },
         {
           name: 'Фирменное блюдо " Пит-Стоп "',
           price: '1600с',
+          count: 0,
           description: 'тибон стейк , кебаб , крылышки , овощи , соус',
         },
         {
           name: 'Тибон стейк',
           price: '1200с',
+          count: 0,
           description: 'Сочный стейк  , КАРТОФЕЛЬ ПО ДЕРЕВЕНСКИ , соус',
         },
         {
           name: 'Люля Кебаб',
           price: '400с',
+          count: 0,
           description: 'говяжий фарш',
         },
         {
           name: 'Кур.грудка с овощами',
           price: '300с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Казан кебаб',
           price: '480с',
+          count: 0,
           description: '',
         },
         {
           name: 'Мясо с фри',
           price: '400с',
+          count: 0,
           description: '',
         },
         {
           name: 'Курица по Княжески',
           price: '300с',
+          count: 0,
           description: '',
         },
         {
           name: 'Мясо по китайски',
           price: '400с',
+          count: 0,
           description: '',
         },
         {
           name: 'Босо лагман',
           price: '250с',
+          count: 0,
           description: '',
         },
         {
           name: ' Рыба под сливочным соусом                                           ',
           price: '450с',
+          count: 0,
           description: '',
         },
         // Add more breakfast items as needed
@@ -203,11 +240,13 @@ const Menu = ({setState, state}) => {
         {
           name: 'Бургер с мясом',
           price: '250гр / 300с',
+          count: 0,
           description: 'мясная котлета , булочка , овощи , горчичный соус , сыр , картофель фри ',
         },
         {
           name: 'Клаб сендвич',
           price: '250гр / 220с',
+          count: 0,
           description: 'Клаб сендвич',
         },
         // Add more breakfast items as needed
@@ -219,41 +258,49 @@ const Menu = ({setState, state}) => {
         {
           name: 'Разносолы',
           price: '400гр / 450с',
+          count: 0,
           description: 'селёдка , маринованные черри , грибочки , корнишоны , отварной картофель ',
         },
         {
           name: 'Мясное ассорти',
           price: '250гр / 480с',
+          count: 0,
           description: 'отварная говядина , копчёная телятина , говяжий язык , зелень',
         },
         {
           name: 'Свежие овощи',
           price: '450гр / 400с',
+          count: 0,
           description: 'помидоры , огурцы , перец болгарский , зелень , соус',
         },
         {
           name: 'Пивной сет',
           price: '800гр / 1200с',
+          count: 0,
           description: 'фри , куриные крылышки , крокеты , луковые кольца , чечел , чипсы , чесночные гренки , соус',
         },
         {
           name: 'Гриль сет',
           price: '400гр / 600с',
+          count: 0,
           description: 'острые мясные , нежные куриные домашние колбаски , овощи на гриле',
         },
         {
           name: 'Чикен сет',
           price: '500гр / 500с',
+          count: 0,
           description: 'куриные крылышки , куриная грудка , картофель фри , чесночный соус',
         },
         {
           name: 'Куриные крылышки',
           price: '250гр / 350с',
+          count: 0,
           description: 'крылышки в кисло-сладком соусе',
         },
         {
           name: 'Хрустящие куриные крылышки',
           price: '300гр / 350с',
+          count: 0,
           description: 'хрустящие жаренные крылышки в кляре',
         },
         // Add more breakfast items as needed
@@ -265,11 +312,13 @@ const Menu = ({setState, state}) => {
         {
           name: 'Хлеб',
           price: '1шт / 40с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Боорсок',
           price: '1кг / 200с',
+          count: 0,
           description: ' ',
         },
         // Add more breakfast items as needed
@@ -281,26 +330,31 @@ const Menu = ({setState, state}) => {
         {
           name: 'Тартар',
           price: '70с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Чесночный',
           price: '70с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Кисло-сладкий',
           price: '70с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Овощной-сладкий',
           price: '70с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Овощной-острый',
           price: '70с',
+          count: 0,
           description: ' ',
         },
         // Add more breakfast items as needed
@@ -312,31 +366,37 @@ const Menu = ({setState, state}) => {
         {
           name: 'Рис отварной',
           price: '100с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Картофель по деревенски',
           price: '200с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Овощи гриль',
           price: '150с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Фри',
           price: '150с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Рис с яйцом',
           price: '150с',
+          count: 0,
           description: ' ',
         },
         {
           name: 'Рис с овощами',
           price: '150с',
+          count: 0,
           description: ' ',
         },
         // Add more breakfast items as needed
@@ -346,33 +406,69 @@ const Menu = ({setState, state}) => {
       category: 'Пицца',
       items: [
         {
-          name: 'Пепперони',
-          price: 'маленькая 450с / большая 600с',
+          name: 'Пепперони Большая',
+          price: '600с',
+          count: 0,
           description: 'соус , сыр моцарелла , салями',
         },
         {
-          name: '4 Сыра',
-          price: 'маленькая 500с / большая 600с',
+          name: 'Пепперони Маленькая',
+          price: '450с',
+          count: 0,
+          description: 'соус , сыр моцарелла , салями',
+        },
+        {
+          name: '4 Сыра Большая',
+          price: '600с',
+          count: 0,
           description: '( моцарелла , пармезан , голландский , брынза',
         },
         {
-          name: 'Ассорти',
-          price: 'маленькая 550с / большая 650с',
+          name: '4 Сыра Маленькая',
+          price: '500',
+          count: 0,
+          description: '( моцарелла , пармезан , голландский , брынза',
+        },
+        {
+          name: 'Ассорти Большая',
+          price: '650с',
+          count: 0,
           description: 'говядина , куриное филе , овощи , кукуруза , салями , помидор , сыр',
         }, 
         {
-          name: 'Цезарь',
-          price: 'маленькая 600с / большая 650с',
+          name: 'Ассорти Маленькая',
+          price: '550с',
+          count: 0,
+          description: 'говядина , куриное филе , овощи , кукуруза , салями , помидор , сыр',
+        },
+        {
+          name: 'Цезарь Большая',
+          price: '650с',
+          count: 0,
           description: 'куриное филе , соус цезарь , листья салата , сыр',
         }, 
         {
-          name: 'Чили',
-          price: 'маленькая 600с / большая 650с',
+          name: 'Цезарь Маленькая',
+          price: '600с',
+          count: 0,
+          description: 'куриное филе , соус цезарь , листья салата , сыр',
+        },
+        {
+          name: 'Чили Большая',
+          price: '650с',
+          count: 0,
           description: 'говяжий фарш',
         }, 
         {
+          name: 'Чили Маленькая',
+          price: '600с',
+          count: 0,
+          description: 'говяжий фарш',
+        },
+        {
           name: 'Хачапури по Аджарски',
           price: '300с',
+          count: 0,
           description: '',
         },
         // Add more breakfast items as needed
@@ -561,10 +657,50 @@ const Menu = ({setState, state}) => {
       ],
     },
   ];
+  
+ let [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
+
+
+useEffect(() => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  console.log(`Saved ${cart.length} items to localstorage`);
+}, [cart]); //dependency is items
+
+// Add a new item
+const addToCart = (item) => {
+    setCart([...cart, item]);
+};
 
 
   return (
-      <div className="py-1 z-10" >
+      <div className="py-1 z-10 w-100">
+        <Link to="/pitstop/cart">
+        <div className='cartIcon' style={{position: 'sticky',
+         top: '10px', marginLeft: '80%',}} >
+      <div style={{
+        width: '70px',
+        color: 'white',
+        borderRadius: 10,
+        background: '#fea116',
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginTop: '-25px'
+        }}>
+        
+            <div>
+              <IoCartOutline />
+            </div>
+            <div style={{color: 'white'}}>
+              <h3 style={{color: 'white'}}>{cart.length}</h3>
+            </div>
+        </div>
+        </div>
+        </Link>
         <div className="container">
           <div>
           <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -595,7 +731,7 @@ const Menu = ({setState, state}) => {
                 </li>
               ))}
             </ul>
-            {state === 10 ? <BarNav /> : <></>}
+            {state === 10 ? <BarNav cart={cart} setCart={setCart}/> : <></>}
             <div className="tab-content">
               {state !== 10 ? menuItems.map((category, index) => (
                 <div
@@ -613,7 +749,10 @@ const Menu = ({setState, state}) => {
                           <div className="w-100 d-flex flex-column text-start ps-1">
                             <h5 className="d-flex justify-content-between border-bottom pb-2">
                               <span>{item.name}</span>
+                              <div className='d-flex' style={{marginBottom: '15px'}}>
                               <span className="text-primary text-slate-950">{item.price}</span>
+                              <IoAddCircleOutline size={30} style={{marginLeft: '15px', marginTop: '-5px'}} onClick={() => addToCart({...item, id:itemIndex + 1123})}/> 
+                            </div>
                             </h5>
                             <small className="fst-italic">
                               {item.description}
