@@ -57,13 +57,13 @@ function deleteProduct (newItem) {
   }
 
   function calcSubPrice(name, price) {
-    return Number(calcSubCount(name)) * Number(price.replace(/[^\d]/g, ' ').slice(-4))
+    return Number(calcSubCount(name)) * Number(price.replace(/[^\d]/g, ' ').slice(-5))
   }
 
   function calcSubTotalPrice() {
     let totalPrice = 0
     product.forEach((item) => {
-      totalPrice += Number(item.price.replace(/[^\d]/g, ' ').slice(-4))
+      totalPrice += Number(item.price.replace(/[^\d]/g, ' ').slice(-5))
     })
     return totalPrice
   }
@@ -72,7 +72,7 @@ function deleteProduct (newItem) {
   function calcObs() {
     let totalPrice = 0
     product.forEach((item) => {
-      totalPrice += Number(item.price.replace(/[^\d]/g, ' ').slice(-4))
+      totalPrice += Number(item.price.replace(/[^\d]/g, ' ').slice(-5))
     })
 
     return (totalPrice * 15) / 100 
